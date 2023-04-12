@@ -1,23 +1,24 @@
 import React, {useState} from "react";
+import './App.css';
+
 
 function App() {
-  const [num, setNum] = useState(0);
-  
-  const onBtnIncreaseClicked = () => setNum(num + 1);
-  const onBtnTenIncreaseClicked = () => setNum(num + 10);
-  const onBtnMinusClicked = () => setNum(num - 1);
-  const onBtnTenMinusClicked = () => setNum(num - 10);
-
+  let [num, setNum] = useState(0);
+  let name = "";
+  if(num == 1){
+    name = "moving";
+  }
+  else if(num == 2){
+    name = "";
+    num = 0;
+  }
+  const rNum = (min, max) => Math.random() * (min-max) + min;
+  console.log(rNum(3600,3960));
   return (
     <>
-      <div>NUM : {num}</div>
-      <button onClick={() => setNum( num + 1 )}>+1</button>
-      <br/>
-      <button onClick={() => setNum( num + 10 )}>+10</button>
-      <br/>
-      <button onClick={() => setNum( num - 1 )}>-1</button>
-      <br/>
-      <button onClick={() => setNum( num - 10 )}>-10</button>
+      <div className={"test " + name} onClick={()=>setNum(num+1)}>
+        <div className={"circle red"}></div>
+      </div>
     </>
   );
 }
